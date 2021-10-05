@@ -1,7 +1,6 @@
 from flask import Flask, request
 from subprocess import Popen
 import sys
-import time
 
 app = Flask(__name__)
 
