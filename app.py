@@ -1,5 +1,6 @@
-from flask import Flask, request
+from flask import Flask, request, Response
 from subprocess import Popen
+from source.video_files import video_dict
 import sys
 
 app = Flask(__name__)
@@ -13,8 +14,8 @@ def hello_world():
 @app.route("/play_video", methods=['GET'])
 def play_video():
     video_name = request.args.get('video_name', None)
-    if video_name == None:
-        return "invalid video name. try something like /play_video?video_name=video1"
+    if video_name == None or video_name not in video_dict.keys():
+        return Response("invalid video name. try something like /play_video?video_name=video1", status=404)
     process_id = Popen([sys.executable, 'playvideo.py', '--video_name', video_name])
     running_processes.append(process_id)
     print(process_id)

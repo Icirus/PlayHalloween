@@ -1,15 +1,10 @@
 import cv2
 from ffpyplayer.player import MediaPlayer
 import argparse
-
-video_dict = {
-    "video1": "C:\\example\\full\\path\\to\\video",
-    "video2": "source\video2.mp4"
-}
+from source.video_files import video_dict
 
 
-
-def testing(video_name, video_dict):
+def playvideo(video_name, video_dict):
     video_path = video_dict.get(video_name, None)
     if video_path == None:
         raise ValueError('No path to video found')
@@ -36,12 +31,10 @@ def testing(video_name, video_dict):
     video.release()
     player.close_player()
 
-    return testing()
+    return playvideo()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Input File path...')
     parser.add_argument('--video_name', help='name of the video mapped in video_dict', dest='video_name')
-
     args = parser.parse_args()
-    print(args.video_name)
-    testing(args.video_name, video_dict)
+    playvideo(args.video_name, video_dict)
