@@ -1,3 +1,9 @@
+To setup your environment: 
+1. Clone the Repo to a local directory.
+2. CD into the cloned directory if you are not already in it. 
+3. run 'pip install -r requirements.txt'.
+4. update the video_dict.py file with the approriate video name, and path to file.
+
 Running app.py will start the server. Its currently in Debug mode to get a little extra logging. Once the server comes online, it will 
 broadcast the ip address and port. 
 
